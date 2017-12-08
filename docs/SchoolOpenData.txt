@@ -1,0 +1,35 @@
+
+/* Reference data set
+    [0] => 100000
+    [1] => 201
+    [2] => City of London
+    [3] => 3614
+    [4] => Sir John Cass's Foundation Primary School
+    [5] => St James's Passage
+    [6] => Duke's Place
+    [7] => 
+    [8] => London
+    [9] => 
+    [10] => EC3A 5DE
+    [11] => Voluntary Aided School
+    [12] => 11
+    [13] => 3
+    [14] => No Boarders
+    [15] => Does not have a sixth form
+    [16] => 
+    [17] => Primary
+    [18] => Mixed
+    [19] => Church of England
+    [20] => Does not apply
+    [21] => Not applicable
+    [22] => www.sirjohncassprimary.org
+    [23] => 02072831147
+    [24] => Mr Tim Wilson
+    [25] => Open
+    [26] => Not applicable
+    [27] => 
+    [28] => E14000639
+    [29] => Cities of London and Westminster
+    [30] => London
+*/
+
