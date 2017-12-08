@@ -11,17 +11,29 @@ class SchoolOpenData
 {
 	protected $schools = [];
 	protected $tempFile;
+	protected $dataPath;
 	protected $coords;
 
 	function __construct(string $schoolDataPath, array $coords=null)
 	{
 		$this->coords = $coords;
+		$this->dataPath = $schoolDataPath;
 		// if file exists and is not a directory then do not load from API - use local copy instead
 		if (!file_exists($schoolDataPath) && !is_dir($schoolDataPath) && $this->load()) {
 			$this->importAndSaveData($schoolDataPath);
 		}
 	}
 
+	public function loadData()
+	{
+		$fp = fopen($this->dataPath, 'r');
+		if ($fp) {
+			while (($school = fgetcsv($fp, 512, ",")) !== FALSE) {
+				$this->schools[$school[School::POSTCODE]] = $school;
+			}
+		}
+		fclose($fp);
+	}
 
 	// remove temporary data file
 	public function __destruct() { if (file_exists($this->tempFile)) unlink($this->tempFile); }

@@ -11,7 +11,8 @@ class SchoolOpenDataTest extends TestCase
 
 	public function Setup()
 	{
-		$this->sObject = new SchoolOpenData();
+		$this->sObject = new SchoolOpenData('schools.dat');
+		$this->sObject->loadData();
 		// test postcode data
 		$this->postcode = 'NW61TF';
 		$this->lat = 51.5519;
@@ -20,19 +21,13 @@ class SchoolOpenDataTest extends TestCase
 
 	public function testSchoolDataLookup()
 	{
-		$this->assertEquals($this->sObject->schools()[$this->postcode]->address->postcode, $this->postcode);
+		$this->assertEquals($this->sObject->schools()[$this->postcode][School::POSTCODE], $this->postcode);
 	}
 
 	// test of object member referencing and data stored/retrieved is correct
 	public function testLatLonCoords()
 	{
-		$postcodes = new PostcodeCoords();
-		$postcodes->importData(); // TODO
-		echo "countfor coords1=" . count($postcodes->coords()) . PHP_EOL;
-		$schools = new SchoolOpenData($postcodes->coords());
-
-		print_r($this->sObject->schools()[$this->postcode]);
-		$this->assertEquals($this->sObject->schools()[$this->postcode]->address->lat, $this->lat);
-		$this->assertEquals($this->sObject->schools()[$this->postcode]->address->lon, $this->lon);
+		$this->assertEquals($this->sObject->schools()[$this->postcode][School::LAT], $this->lat);
+		$this->assertEquals($this->sObject->schools()[$this->postcode][School::LON], $this->lon);
 	}
 }
