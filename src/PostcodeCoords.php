@@ -122,8 +122,8 @@ class PostcodeCoords
 			while (($line = fgets($fpi)) !== false) {
 				$field = explode(',', $line);
 				if (!$firstLine) {
-					$lat = number_format((double)$field[2],4,'.','');
-					$lon = number_format((double)$field[3],4,'.','');
+					$lat = number_format((float)$field[2],4,'.','');
+					$lon = number_format((float)$field[3],4,'.','');
 					fwrite($fpo, str_replace(' ','',$field[1]) . ',' . $lat . ',' . $lon . PHP_EOL);
 				}
 				$firstLine = false;
@@ -134,29 +134,28 @@ class PostcodeCoords
 		}
 	}
 
-	static public function radians(double $degrees) 
+	static public function distance(float $lat1, float $lon1, float $lat2, float $lon2)
 	{
-		return $degrees * M_PI / 180;
-	}
-
-	static public function distance(double $lat1, double $lon1, double $lat2, double $lon2)
-	{
-		$rad = M_PI / 180;	// radian
-		$r = 6372.797;		// mean radius of Earth in km.
+		static $radConversion = M_PI / 180;	// radian
+		static $r = 6372.797;		// mean radius of Earth in km.
 
 		if ($lat1 == 0 || $lat1 == 0 || $lat2 == 0 || $lon2 == 0) {
 			return 0;
 		}
 
-		$diffLat = self::radians($lat2 - $lat1);
-		$diffLon = self::radians($lon2 - $lon1);
+		$diffLat = $radConversion * ($lat2 - $lat1);
+		$diffLon = $radConversion * ($lon2 - $lon1);
+		$lat1 *= $radConversion;
+		$lon1 *= $radConversion;
+		$lat2 *= $radConversion;
+		$lon2 *= $radConversion;
 
-		$a = sin($diffLat / 2) * sin($diffLat / 2) + cos($lat1) * cos($lat2) * sin($diffLon / 2) * sin($dlon / 2);
-		$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+		$a = sin($diffLat / 2) * sin($diffLat / 2) + cos($lat1) * cos($lat2) * sin($diffLon / 2) * sin($diffLon / 2);
+		$c = 2 * asin(sqrt($a));
 		return $r * $c; 	// km 
 	}
 
-	static public function distanceMiles(double $lat1, double $lon1, double $lat2, double $lon2)
+	static public function distanceMiles(float $lat1, float $lon1, float $lat2, float $lon2)
 	{
 		return 0.6214 * self::distance($lat1, $lon1, $lat2, $lon2);
 	}
