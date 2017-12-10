@@ -4,56 +4,30 @@ use PHPUnit\Framework\TestCase;
 
 class PostcodeCoordsTest extends TestCase
 {
-	protected $pObject;
-
-	protected function Setup()
-	{
-		$this->pObject = new PostcodeCoords();
-	}
-
-	protected function tearDown() 
-	{
-		if (file_exists($this->pObject->localDataFile())) {
-			unlink($this->pObject->localDataFile());
-		}
-	}
-
-	public function testZipPath()
-	{
-		$this->assertEquals($this->pObject->localDataZip(), basename($this->pObject->openDataUrl()));
-	}
-
-	// do not use Setup() object, test non-default path passed to ctor.
-	// NOTE this uses linux /tmp folder in pathname.
-	public function testNonDefaultPath()
-	{
-		$testFilePath = '/tmp/postcodeCoords.csv';
-
-		// first remove test file if it exists
-		if (file_exists($testFilePath)) {
-			unlink($testFilePath);
-		}
-		// instantiate object with specified test file path.
-		$pc = new PostcodeCoords(dirname($testFilePath));
-
-		// download the data from source
-		$this->assertTrue($pc->download());
-
-		$this->assertFileExists($pc->localDataFile());
-	}
-
 	// No. of UK postcodes >1.7M, test that import is at least this size.
-	public function testImport()
+	public function testCoordsLoaded()
 	{
-		$this->pObject->importData();
-		$this->assertGreaterThan(1700000, count($this->pObject->coords()));
+		$coords = PostcodeCoordsDataFile::Coords();
+		$this->assertGreaterThan(1700000, count($coords));
+	}
+
+	public function testApiInfo()
+	{
+		$info = PostcodeCoords::Info('zz1x99');
+		$this->assertFalse($info);
+
+		$info = PostcodeCoords::Info('w1a1aa');
+		//$this->assertFalse(!$info);
+		$this->assertEquals($info->region, 'London');
+		$this->assertEquals($info->incode, '1AA');
+		$this->assertEquals($info->admin_district, 'Westminster');
 	}
 
 	public function testPostcode()
 	{
-		$this->pObject->importData();
-		// canonical postcode
-		$this->assertTrue(array_key_exists('NW11AA', $this->pObject->coords()));
+		$coords = PostcodeCoordsDataFile::Coords();
+		// canonical test postcode
+		$this->assertTrue(array_key_exists('NW11AA', $coords));
 	}
 
 	public function testDistanceCalculation()

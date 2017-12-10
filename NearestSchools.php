@@ -3,9 +3,8 @@
 require_once __DIR__ . '/src/autoload.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
-// get the coords of the postcode entered by user
-$pcode = new Postcode();
-$postcodeCoords = $pcode->openApiInfo($_GET['postcode']);
+// find the coords of the postcode entered by user
+$postcodeCoords = PostcodeCoords::Info($_GET['postcode']);
 
 if ($postcodeCoords && $postcodeCoords->latitude && $postcodeCoords->longitude) {
 
