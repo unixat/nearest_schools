@@ -1,0 +1,35 @@
+stdClass Object
+(
+		[postcode] => W1A 1AA
+		[quality] => 1
+		[eastings] => 528887
+		[northings] => 181593
+		[country] => England
+		[nhs_ha] => London
+		[longitude] => -0.14379917966518
+		[latitude] => 51.518561589488
+		[european_electoral_region] => London
+		[primary_care_trust] => Westminster
+		[region] => London
+		[lsoa] => Westminster 013D
+		[msoa] => Westminster 013
+		[incode] => 1AA
+		[outcode] => W1A
+		[parliamentary_constituency] => Cities of London and Westminster
+		[admin_district] => Westminster
+		[parish] => Westminster, unparished area
+		[admin_county] => 
+		[admin_ward] => West End
+		[ccg] => NHS Central London (Westminster)
+		[nuts] => Westminster
+		[codes] => stdClass Object
+		(
+				[admin_district] => E09000033
+				[admin_county] => E99999999
+				[admin_ward] => E05000649
+				[parish] => E43000236
+				[parliamentary_constituency] => E14000639
+				[ccg] => E38000031
+				[nuts] => UKI32
+		)
+)

@@ -1,0 +1,5 @@
+vendor/
+.svn
+*.o
+*.dat
+*.zip
