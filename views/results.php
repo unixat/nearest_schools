@@ -1,15 +1,17 @@
 <?php
 
+namespace NearestSchools;
+
 if ('cli' != php_sapi_name()) {
 ?>
 	<div class="school">
-		<h2><?php echo $school[NearestSchools\School::NAME]; ?></h2>
-		<p><?php echo $school[NearestSchools\School::STREET]; ?></p>
-		<p><?php echo $school[NearestSchools\School::TOWN]; ?></p>
-		<p><?php echo $school[NearestSchools\School::POSTCODE]; ?></p>
-		<p><?php echo $school[NearestSchools\School::TYPE]; ?></p>
-		<p><?php echo 'Age Range: ' . $school[NearestSchools\School::AGE_LO] . ' to ' . $school[NearestSchools\School::AGE_HI]; ?></p>
-		<p><?php echo 'Distance: ' . $school[NearestSchools\School::DIST] . ' miles'; ?></p>
+		<h2><?php echo $school[School::NAME]; ?></h2>
+		<p><?php echo $school[School::STREET]; ?></p>
+		<p><?php echo $school[School::TOWN]; ?></p>
+		<p><?php echo $school[School::POSTCODE]; ?></p>
+		<p><?php echo $school[School::TYPE]; ?></p>
+		<p><?php echo 'Age Range: ' . $school[School::AGE_LO] . ' to ' . $school[School::AGE_HI]; ?></p>
+		<p><?php echo 'Distance: ' . $school[School::DIST] . ' miles'; ?></p>
 	</div>
 <?php
 }

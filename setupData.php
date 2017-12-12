@@ -7,5 +7,5 @@ use Box\Spout\Common\Type;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$postcodes = new PostcodeCoords();
-$schools = new SchoolOpenData('schools.dat', $postcodes->coords());
+// TODO - rm old schools data file
+$schools = new SchoolOpenData('schools.dat', PostcodeCoordsDataFile::Coords());

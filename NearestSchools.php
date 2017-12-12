@@ -6,8 +6,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', true);
 ini_set('log_errors', true);
 
-
-//require_once __DIR__ . '/src/autoload.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 // get the coords of the postcode entered by user
@@ -26,8 +24,8 @@ if ('cli' == php_sapi_name()) {
 	$maxDistance = (float)readline('Max Distance (miles): ');
 }
 
-// get coordinates from API
-$postcodeCoords = $pcode->openApiInfo($postcode);
+// find the coords of the postcode entered by user
+$postcodeCoords = PostcodeCoords::Info($_GET['postcode']);
 
 if ($postcodeCoords && $postcodeCoords->latitude && $postcodeCoords->longitude) {
 
