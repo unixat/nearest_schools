@@ -6,9 +6,7 @@ class PostcodeTest extends TestCase
 {
 	public function testApiCall()
 	{
-		$p = new Postcode();
-		$info = $p->openApiInfo('zz1x99');
-		$this->assertFalse($info);
+		$p = new NearestSchools\Postcode();
 
 		$info = $p->openApiInfo('w1a1aa');
 		//$this->assertFalse(!$info);

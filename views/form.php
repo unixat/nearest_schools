@@ -1,4 +1,4 @@
-	<form id="form" action="NearestSchools.php">
+	<form id="form" name="form" type="post" action="NearestSchools.php">
 		<div class="field">
 		<label for="postcode">Postcode:</label>
 		<input id="postcode" name="postcode" type="text" />

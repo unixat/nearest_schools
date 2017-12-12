@@ -19,3 +19,6 @@ When a postcode is entered, it's coordinates are returned from an Open Data API 
 If no make tool available run `composer install` followed by `php setupData.php`.
 
 Once installed and a web server virtual host enviroment is directed to the folder, a browser directed to the virtual host will run the application.
+
+### TODO
+Output results in distance order.

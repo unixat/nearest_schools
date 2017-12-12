@@ -4,8 +4,11 @@
 // Downloads Open data and creates school data file used by application.
 //
 
+
 use Box\Spout\Reader\ReaderFactory;
 use Box\Spout\Common\Type;
+
+namespace NearestSchools;
 
 class SchoolOpenData
 {

@@ -10,7 +10,7 @@ function autoloader($class)
 {
 	$path = __DIR__ . "/{$class}.php";
 	if (file_exists($path)) {
-		//echo PHP_EOL, "{$class} required", PHP_EOL;
+		// echo PHP_EOL, "{$class} required", PHP_EOL;
 		require $path;
 	}
 }

@@ -18,6 +18,8 @@
 
 	"autoload": {
 		"psr-4": {
+			"Box\\Spout\\": ["vendor/box/spout"],
+			"NearestSchools\\": [ "src/", "tests/" ]
 		}
 	}
 }

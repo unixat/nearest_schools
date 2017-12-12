@@ -4,6 +4,8 @@
 // Represents a school data record which is saved in CSV format.
 //
 
+namespace NearestSchools;
+
 class School
 {
 	public $name;

@@ -6,7 +6,7 @@ class SchoolTest extends TestCase
 {
 	public function testObjectToArray()
 	{
-		$s = new School;
+		$s = new NearestSchools\School;
 		$s->name = 'Grange Hill';
 		$s->type = 'Comprensive Academy';
 		$s->authority = 'London Borough of Billingsley';

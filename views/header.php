@@ -24,6 +24,7 @@
 				alert('postcode length is invalid');
 				return false;
 			}
+			document.form.submit();
 			return true;
 		}
 

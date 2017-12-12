@@ -11,7 +11,7 @@ class SchoolOpenDataTest extends TestCase
 
 	public function Setup()
 	{
-		$this->sObject = new SchoolOpenData('schools.dat');
+		$this->sObject = new NearestSchools\SchoolOpenData('schools.dat');
 		$this->sObject->loadData();
 		// test postcode data
 		$this->postcode = 'NW61TF';
@@ -21,13 +21,13 @@ class SchoolOpenDataTest extends TestCase
 
 	public function testSchoolDataLookup()
 	{
-		$this->assertEquals($this->sObject->schools()[$this->postcode][School::POSTCODE], $this->postcode);
+		$this->assertEquals($this->sObject->schools()[$this->postcode][NearestSchools\School::POSTCODE], $this->postcode);
 	}
 
 	// test of object member referencing and data stored/retrieved is correct
 	public function testLatLonCoords()
 	{
-		$this->assertEquals($this->sObject->schools()[$this->postcode][School::LAT], $this->lat);
-		$this->assertEquals($this->sObject->schools()[$this->postcode][School::LON], $this->lon);
+		$this->assertEquals($this->sObject->schools()[$this->postcode][NearestSchools\School::LAT], $this->lat);
+		$this->assertEquals($this->sObject->schools()[$this->postcode][NearestSchools\School::LON], $this->lon);
 	}
 }

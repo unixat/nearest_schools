@@ -5,6 +5,8 @@
 // Stores lat-long data in array keyed by postcode.
 //
 
+namespace NearestSchools;
+
 class PostcodeCoords
 {
 	protected static $openDataUrl = 'https://www.freemaptools.com/download/full-postcodes/ukpostcodes.zip';
@@ -95,7 +97,7 @@ class PostcodeCoords
 	{
 		if (file_put_contents($this->localZip, fopen(self::$openDataUrl, 'r'))) 
 		{
-			$zip = new ZipArchive;
+			$zip = new \ZipArchive;
 			if ($zip->open($this->localZip) === true) {
 				$ret = $zip->extractTo($this->localDataDir);
 				$this->filterDataFile();

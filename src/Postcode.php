@@ -3,6 +3,9 @@
 // Postcode
 // Uses postcode param in call postcode API to find postcode's coordinates.
 //
+
+namespace NearestSchools;
+
 class Postcode
 {
 	protected $apiUrl = 'https://api.postcodes.io/postcodes/';
