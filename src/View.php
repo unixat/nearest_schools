@@ -20,7 +20,7 @@ class View
 
 	static public function formWithError()
 	{
-		if ('cli' == php_sapi_name()) {
+		if ('cli' != php_sapi_name()) {
 			$pages = ['header','form','error','footer'];
 			ob_start();
 			foreach ($pages as $page) {
@@ -29,7 +29,7 @@ class View
 			ob_end_flush();
 		}
 		else {
-			echo 'Something went wrong with your request';
+			echo 'Something went wrong - postcode probably invalid' . PHP_EOL;
 		}
 	}
 

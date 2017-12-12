@@ -2,14 +2,9 @@
 
 namespace NearestSchools;
 
-error_reporting(E_ALL);
-ini_set('display_errors', true);
-ini_set('log_errors', true);
-
 require_once __DIR__ . '/vendor/autoload.php';
 
 // get the coords of the postcode entered by user
-$pcode = new Postcode();
 if (array_key_exists('postcode', $_REQUEST)) {
 	$postcode = $_REQUEST['postcode'];
 	$maxDistance = $_REQUEST['maxDistance'];
@@ -25,7 +20,7 @@ if ('cli' == php_sapi_name()) {
 }
 
 // find the coords of the postcode entered by user
-$postcodeCoords = PostcodeCoords::Info($_GET['postcode']);
+$postcodeCoords = PostcodeCoords::Info($postcode);
 
 if ($postcodeCoords && $postcodeCoords->latitude && $postcodeCoords->longitude) {
 

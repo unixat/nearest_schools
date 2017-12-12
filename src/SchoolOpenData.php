@@ -4,11 +4,10 @@
 // Downloads Open data and creates school data file used by application.
 //
 
-
-use Box\Spout\Reader\ReaderFactory;
-use Box\Spout\Common\Type;
-
 namespace NearestSchools;
+
+use \Box\Spout\Common\Type;
+use \Box\Spout\Reader\ReaderFactory;
 
 class SchoolOpenData
 {
@@ -22,7 +21,7 @@ class SchoolOpenData
 		$this->coords = $coords;
 		$this->dataPath = $schoolDataPath;
 		// if file exists and is not a directory then do not load from API - use local copy instead
-		if (!file_exists($schoolDataPath) && !is_dir($schoolDataPath) && $this->load()) {
+		if ((!file_exists($schoolDataPath) || !filesize($schoolDataPath)) && !is_dir($schoolDataPath) && $this->load()) {
 			$this->importAndSaveData($schoolDataPath);
 		}
 	}
